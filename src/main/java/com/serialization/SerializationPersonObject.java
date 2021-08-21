@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class SerializationStudentObject {
+public class SerializationPersonObject {
 	public static void main(String[] args) {
-		Student student = new Student();
-		student.setRollNo(100);
-		student.setName("Nana");
+		Person person = new Person();
+		person.setId(100);
+		person.setName("Nana");
 
 		// Serialize object write on file
 		FileOutputStream fileOutputStream = null;
@@ -20,11 +20,11 @@ public class SerializationStudentObject {
 			// Saving of object in a file
 			// CompileTimeException:FileNotFoundException occures When file not
 			// found in system.
-			fileOutputStream = new FileOutputStream("src/main/resources/fileoprations/writeObject.txt");
+			fileOutputStream = new FileOutputStream("src/main/resources/fileoprations/writeObjectPerson.txt");
 
 			objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-			objectOutputStream.writeObject(student);
+			objectOutputStream.writeObject(person);
 
 			objectOutputStream.close();
 			fileOutputStream.close();
@@ -42,16 +42,16 @@ public class SerializationStudentObject {
 			// Saving of object in a file
 			// CompileTimeException:FileNotFoundException occures When file not
 			// found in system.
-			fileInputStream = new FileInputStream("src/main/resources/fileoprations/writeObject.txt");
+			fileInputStream = new FileInputStream("src/main/resources/fileoprations/writeObjectPerson.txt");
 
 			objectInputStream = new ObjectInputStream(fileInputStream);
 
-			//Default constructor not call here.
-			Student studentRead = (Student) objectInputStream.readObject();
+			// Default constructor not call here.
+			Person personRead = (Person) objectInputStream.readObject();
 
-			System.out.println("De-Serialization :" + studentRead);
-	
-			System.out.println("De-Serialization Get Values: " + studentRead.getRollNo() +"----"+ studentRead.getName() );
+			System.out.println("De-Serialization :" + personRead);
+
+			System.out.println("De-Serialization Get Values: " + personRead.getId() + "----" + personRead.getName());
 
 			objectInputStream.close();
 			fileInputStream.close();

@@ -57,8 +57,8 @@ public class SerializationEmployeeObject {
 
 			System.out.println("De-Serialization Get Values: " + employeeRead.msg);
 
-			objectOutputStream.close();
-			fileOutputStream.close();
+			fileInputStream.close();
+			objectInputStream.close();
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
